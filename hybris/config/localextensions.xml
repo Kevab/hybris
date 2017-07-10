@@ -15,7 +15,10 @@
         <extension name="hmc" />
         <extension name="mcc" />
         <extension name="platformhmc" />                                             
-        <extension name="mediaconversion" />                                                 
+        <extension name="mediaconversion" />  
+		<extension name="cuppy"/>
+		<extension name="cuppytrail" />
+		<extension name="recipes" />
                          
     </extensions>
 </hybrisconfig>
