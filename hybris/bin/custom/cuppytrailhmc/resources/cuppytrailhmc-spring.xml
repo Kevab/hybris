@@ -38,21 +38,21 @@
 	
 	<!--  Example how to override a manager -->
 	<!--
-	<bean id="core.productManager"   class="de.hybris.platform.cuppytrail.jalo.CuppytrailProductManager" 	init-method="init"	destroy-method="destroy" />
+	<bean id="core.productManager"   class="de.hybris.platform.cuppytrailhmc.jalo.CuppytrailhmcProductManager" 	init-method="init"	destroy-method="destroy" />
 	-->
 	
 	
  	<!--  Example how to configure the class to use for jalo session creation -->
 	<!--
 	<bean id="jalosession"   class="de.hybris.platform.jalo.JaloSessionFactory">
-		<property name="targetClassName" value="de.hybris.platform.cuppytrail.jalo.CuppytrailJaloSession"/>
+		<property name="targetClassName" value="de.hybris.platform.cuppytrailhmc.jalo.CuppytrailhmcJaloSession"/>
 	</bean>
 	-->
 
 	
 	<!--  Example how to override an item  -->
 	<!-- 
-	<bean id="de.hybris.platform.jalo.product.Product" class="de.hybris.platform.cuppytrail.jalo.CuppytrailProduct" scope="prototype" />		
+	<bean id="de.hybris.platform.jalo.product.Product" class="de.hybris.platform.cuppytrailhmc.jalo.CuppytrailhmcProduct" scope="prototype" />		
  	-->
 
 	<!--  
@@ -61,9 +61,9 @@
      -->
 	
 	<!-- 
-	<bean id="cuppytrailProfBean" class="de.hybris.platform.cuppytrail.aop.CuppytrailProfilingAspect"/>
+	<bean id="cuppytrailhmcProfBean" class="de.hybris.platform.cuppytrailhmc.aop.CuppytrailhmcProfilingAspect"/>
 	<aop:config proxy-target-class="true">
-  		<aop:aspect id="cuppytrailProfAspect" ref="cuppytrailProfBean" >
+  		<aop:aspect id="cuppytrailhmcProfAspect" ref="cuppytrailhmcProfBean" >
     	  <aop:pointcut id="profiledMethods" 
 	      	expression="execution(* getModificationTime(..))" />  	            
 	   		<aop:around pointcut-ref="profiledMethods" method="profile" />
@@ -79,18 +79,7 @@
 	      	            !execution(* getPK(..))" />  	            
 	       <aop:pointcut id="profiledMethods" expression="execution(* *(..))" />	
 	  -->
-	<bean id="stadiumDAO" class="de.hybris.platform.cuppytrail.daos.impl.DefaultStadiumDAO">
-		<property name="flexibleSearchService" ref="flexibleSearchService"/>
-	</bean>
 	
-	<alias name="defaultStadiumService" alias="stadiumService"/>
-    <bean id="defaultStadiumService" class="de.hybris.platform.cuppytrail.impl.DefaultStadiumService">
-        <property name="stadiumDAO" ref="stadiumDAO"/>
-    </bean>
-    
-    <alias name="defaultStadiumFacade" alias="stadiumFacade"/>
-	<bean id="defaultStadiumFacade" class="de.hybris.platform.cuppytrail.facades.impl.DefaultStadiumFacade">
-  		<property name="stadiumService" ref="stadiumService" />
-	</bean>
+			
 			
 </beans>

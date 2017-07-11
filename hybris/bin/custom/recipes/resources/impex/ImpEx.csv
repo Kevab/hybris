@@ -1,8 +1,8 @@
-INSERT Food; idFood; description
+INSERT_UPDATE Food; idFood[unique=true]; description
 ;food1;tomato
 ;food2;mozzarella
 ;food3;bacon
-;food3;cheddar
+;food16;cheddar
 ;food4;hamburger
 ;food5;sausage
 ;food6;lettuce
