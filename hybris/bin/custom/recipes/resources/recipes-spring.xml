@@ -79,6 +79,14 @@
 	      	            !execution(* getPK(..))" />  	            
 	       <aop:pointcut id="profiledMethods" expression="execution(* *(..))" />	
 	  -->
+	  <bean id="recipeDAO" class="en.hybris.platform.recipes.daos.impl.DefaultRecipeDAO">
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+	</bean>
+	
+	<alias name="defaultRecipeService" alias="recipeService"/>
+    <bean id="defaultRecipeService" class="en.hybris.platform.recipes.impl.DefaultRecipeService">
+        <property name="recipeDAO" ref="recipeDAO"/>
+    </bean>
 	
 			
 			

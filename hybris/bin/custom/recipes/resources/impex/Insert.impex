@@ -1,0 +1,41 @@
+INSERT_UPDATE Food; code[unique=true]; name[lang=en]
+;food1;tomato
+;food2;mozzarella
+;food3;bacon
+;food16;cheddar
+;food4;hamburger
+;food5;sausage
+;food6;lettuce
+;food7;onion
+;food8;pepper
+;food9;chicken
+;food10;egg
+;food11;carrot
+;food12;beans
+;food13;lettuce
+;food14;peas
+;food15;rocket
+
+INSERT_UPDATE Recipe; code; name[lang=en]; servings; preparationTime
+;recipe1;Rome;2;10
+;recipe2;Milan;4;15
+;recipe3;Naples;2;40
+;recipe4;Florence;4;20
+;recipe5;Salerno;2;35
+;recipe6;Ariano;2;25
+;recipe7;Taranto;4;18
+;recipe8;Bari;2;30
+;recipe9;Lecce;4;15
+;recipe10;Benevento;2;20
+
+INSERT_UPDATE RecipeEntry; entryNumber; displayName[lang=en]; food(code)
+;1;tomato;food1
+;2;carrot;food11
+;3;onion;food7
+;4;hamburger;food4
+;5;rocket;food15
+;6;pepper;food8
+;7;bacon;food3
+;8;sausage;food5
+;9;chicken;food9
+;10;egg;food10

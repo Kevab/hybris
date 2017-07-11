@@ -25,5 +25,12 @@
 		<property name="flag" type="boolean"/>
 	</bean>
 	-->
+	 <bean class="en.hybris.platform.recipes.data.RecipeData">
+        <description>Data object representing a Recipe</description>
+        <property name="code" type="String"/>
+        <property name="name" type="String"/>
+        <property name="servings" type="Integer"/>
+        <property name="preparationTime" type="Integer"/>
+    </bean>
 
 </beans>
