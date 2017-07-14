@@ -7,6 +7,7 @@
  
         Stadium Details for ${stadium.name}<br><br>
             Capacity: ${stadium.capacity}<br>
+            Counter: ${stadium.cont}<br> 
             Matches:<br>
             <ul>
              <c:forEach var="match" items="${stadium.matches}">

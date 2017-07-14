@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+
+	
+	
+	<bean class="en.hybris.platform.data.StageRaceData">
+		<property name="code" type="String"/>
+		<property name="name" type="String"/>
+		<property name="nation" type="String"/>
+		<property name="numberOfStage" type="Integer"/>
+	</bean>
+	
+	<bean class="en.hybris.platform.data.StageData">
+		<property name="code" type="String"/>
+		<property name="name" type="String"/>
+		<property name="date" type="String"/>
+		<property name="cityStart" type="String"/>
+		<property name="cityArrival" type="String"/>
+		<property name="distance" type="Double"/>
+	</bean>
+	
+	<bean class="en.hybris.platform.data.CyclistRankingData">
+		<property name="code" type="String"/>
+		<property name="rank" type="Integer"/>
+		<property name="date" type="String"/>
+		<property name="totalTime" type="String"/>
+	</bean>
+	
+	<bean class="en.hybris.platform.data.CyclistData">
+		<property name="code" type="String"/>
+		<property name="name" type="String"/>
+	</bean>
+	
+	<bean class="en.hybris.platform.data.StageRankingData">
+		<property name="code" type="String"/>
+		<property name="ranking" type="Integer"/>
+		<property name="totalTime" type="Integer"/>
+	</bean>
+</beans>

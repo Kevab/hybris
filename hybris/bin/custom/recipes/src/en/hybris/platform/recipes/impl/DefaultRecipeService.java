@@ -10,7 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Required;
 
 import en.hybris.platform.recipes.RecipeService;
-import en.hybris.platform.recipes.daos.RecipesDAO;
+import en.hybris.platform.recipes.daos.RecipeDAO;
 import en.hybris.platform.recipes.model.RecipeModel;
 
 
@@ -23,15 +23,18 @@ import en.hybris.platform.recipes.model.RecipeModel;
 public class DefaultRecipeService implements RecipeService
 {
 
-	private RecipesDAO recipeDAO;
+	private RecipeDAO recipeDAO;
 
 	/*
 	 * @see en.hybris.platform.recipes.RecipeService#getRecipeByCode(java.lang.String)
 	 */
 	@Override
-	public List<RecipeModel> getRecipeByCode(final String code)
+	public RecipeModel getRecipeByCode(final String code)
 	{
-		return recipeDAO.findRecipeByCode(code);
+		final List<RecipeModel> toReturn;
+		toReturn = recipeDAO.findRecipeByCode(code);
+
+		return toReturn.get(0);
 	}
 
 	/*
@@ -66,7 +69,7 @@ public class DefaultRecipeService implements RecipeService
 	}
 
 	@Required
-	public void setRecipesDAO(final RecipesDAO recipeDAO)
+	public void setRecipeDAO(final RecipeDAO recipeDAO)
 	{
 		this.recipeDAO = recipeDAO;
 	}

@@ -86,11 +86,16 @@
 	<alias name="defaultStadiumService" alias="stadiumService"/>
     <bean id="defaultStadiumService" class="de.hybris.platform.cuppytrail.impl.DefaultStadiumService">
         <property name="stadiumDAO" ref="stadiumDAO"/>
+        <property name="eventService" ref="eventService"></property>
     </bean>
     
     <alias name="defaultStadiumFacade" alias="stadiumFacade"/>
 	<bean id="defaultStadiumFacade" class="de.hybris.platform.cuppytrail.facades.impl.DefaultStadiumFacade">
   		<property name="stadiumService" ref="stadiumService" />
+	</bean>
+	
+	<bean id="incrementsCouterEventListner" class="de.hybris.platform.cuppytrail.eventListner.IncrementsCounterEventListner">
+		<property name="modelService" ref="modelService"/>
 	</bean>
 			
 </beans>

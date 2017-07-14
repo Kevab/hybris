@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<alias name="cyclientDAO" alias="cyclientDAO" />
+	<bean id="cyclientDAO" class="en.hybris.platform.cyclient.daos.impl.DefaultCyclientDAO">
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+	</bean>
+	
+	<alias name="defaultCyclientService" alias="cyclientService" />
+	<bean id="defaultCyclientService" class="en.hybris.platform.services.impl.DefaultCyclientService">
+		<property name="cyclientDAO" ref="cyclientDAO" />
+	</bean>
+	
+	<alias alias="cyclientFacade" name="defaultCyclientFacade" />
+	<bean id="defaultCyclientFacade"
+		class="en.hybris.platform.facades.impl.DefaultCyclientFacade">
+		<property name="cyclientService" ref="cyclientService" />
+		<property name="cyclientStageConverter" ref="cyclientStageConverter" />
+		<property name="cyclientCyclistRankingConverter" ref="cyclientCyclistRankingConverter" />
+		<property name="cyclientStageRaceConverter" ref="cyclientStageRaceConverter" />
+		<property name="cyclientStageRankingConverter" ref="cyclientStageRankingConverter" />
+	</bean>
+	
+	<bean id="cyclientInitDefaultsInterceptor" class="en.hybris.platform.interceptors.CyclientInitDefaultsInterceptor">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+	
+	<bean id="cyclientInitDefaultsInterceptorMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="cyclientInitDefaultsInterceptor" />
+		<property name="typeCode" value="Stage" />
+	</bean>
+			
+</beans>

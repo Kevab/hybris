@@ -85,6 +85,7 @@ public class DefaultStadiumFacade implements StadiumFacade
 		stadiumData.setName(stadium.getCode());
 		stadiumData.setCapacity(stadium.getCapacity().toString());
 		stadiumData.setMatches(matchSummary);
+		stadiumData.setCont(stadium.getCont());
 		return stadiumData;
 	}
 

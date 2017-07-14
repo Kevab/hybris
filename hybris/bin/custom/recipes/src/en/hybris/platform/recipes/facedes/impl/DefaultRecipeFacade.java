@@ -6,6 +6,8 @@ package en.hybris.platform.recipes.facedes.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Required;
+
 import en.hybris.platform.recipes.RecipeService;
 import en.hybris.platform.recipes.data.RecipeData;
 import en.hybris.platform.recipes.facedes.RecipeFacade;
@@ -25,23 +27,21 @@ public class DefaultRecipeFacade implements RecipeFacade
 	 * @see en.hybris.platform.recipes.facedes.RecipeFacade#getRecipeForCode(java.lang.String)
 	 */
 	@Override
-	public List<RecipeData> getRecipeForCode(final String code)
+	public RecipeData getRecipeForCode(final String code)
 	{
 
-		final List<RecipeModel> recipeModels = recipeService.getRecipeByCode(code);
-		final List<RecipeData> recipeFacadeData = new ArrayList<RecipeData>();
+		final RecipeModel recipeModels = recipeService.getRecipeByCode(code);
 
-		for (final RecipeModel rm : recipeModels)
-		{
-			final RecipeData rfd = new RecipeData();
-			rfd.setCode(rm.getCode());
-			rfd.setName(rm.getName());
-			//rfd.setPreparationTime(rm.getPreparationTime());
-			//rfd.setServings(rm.getServings());
-			recipeFacadeData.add(rfd);
-		}
 
-		return recipeFacadeData;
+		final RecipeData rfd = new RecipeData();
+		rfd.setCode(recipeModels.getCode());
+		rfd.setName(recipeModels.getName());
+		rfd.setPreparationTime(recipeModels.getPreparationTime());
+		rfd.setServings(recipeModels.getServings());
+
+
+
+		return rfd;
 	}
 
 	/*
@@ -89,5 +89,13 @@ public class DefaultRecipeFacade implements RecipeFacade
 
 		return recipeFacadeData;
 	}
+
+	@Required
+	public void setRecipeService(final RecipeService recipeService)
+	{
+		this.recipeService = recipeService;
+	}
+
+
 
 }

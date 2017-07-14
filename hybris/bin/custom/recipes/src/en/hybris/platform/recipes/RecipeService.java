@@ -15,7 +15,7 @@ import en.hybris.platform.recipes.model.RecipeModel;
 public interface RecipeService
 {
 
-	List<RecipeModel> getRecipeByCode(String code);
+	RecipeModel getRecipeByCode(String code);
 
 	List<RecipeModel> getRecipeByFoodCode(String code);
 

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2013 hybris AG All rights reserved. 
+	This software is the confidential and proprietary information of hybris ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall 
+	use it only in accordance with the terms of the license agreement you entered 
+	into with hybris. -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<alias alias="recipeFacade" name="defaultRecipeFacade" />
+	<bean id="defaultRecipeFacade"
+		class="org.training.uiip.recipesuiip.facades.impl.DefaultRecipeFacade">
+		<property name="recipeService" ref="recipeService" />
+		<property name="recipeConverter" ref="recipeConverter" />
+	</bean>
+
+	<alias name="defaultRecipePopulator" alias="recipePopulator" />
+	<bean id="defaultRecipePopulator"
+		class="org.training.uiip.recipesuiip.populators.DefaultRecipePopulator">
+		<property name="recipeEntryConverter" ref="recipeEntryConverter" />
+	</bean>
+
+	<alias name="defaultRecipeConverter" alias="recipeConverter" />
+	<bean id="defaultRecipeConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.training.uiip.recipesuiip.data.RecipeData" />
+		<property name="populators">
+			<list>
+				<ref bean="recipePopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultRecipeEntryPopulator" alias="recipeEntryPopulator" />
+	<bean id="defaultRecipeEntryPopulator"
+		class="org.training.uiip.recipesuiip.populators.DefaultRecipeEntryPopulator">
+		<property name="recipeProductConverter" ref="recipeProductConverter" />
+	</bean>
+
+	<alias name="defaultRecipeEntryConverter" alias="recipeEntryConverter" />
+	<bean id="defaultRecipeEntryConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.training.uiip.recipesuiip.data.RecipeEntryData" />
+		<property name="populators">
+			<list>
+				<ref bean="recipeEntryPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultRecipeProductPopulator" alias="recipeProductPopulator" />
+	<bean id="defaultRecipeProductPopulator"
+		class="org.training.uiip.recipesuiip.populators.DefaultRecipeProductPopulator" />
+
+	<alias name="defaultRecipeProductConverter" alias="recipeProductConverter" />
+	<bean id="defaultRecipeProductConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.training.uiip.recipesuiip.data.ProductData" />
+		<property name="populators">
+			<list>
+				<ref bean="recipeProductPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias alias="recipeService" name="defaultRecipeService" />
+	<bean id="defaultRecipeService"
+		class="org.training.uiip.recipesuiip.services.impl.DefaultRecipeService">
+		<property name="recipeDao" ref="recipeDao" />
+	</bean>
+
+	<bean id="recipeInitDefaultsInterceptor"
+		class="org.training.uiip.recipesuiip.interceptors.RecipeInitDefaultsInterceptor" />
+
+	<bean id="recipeInitDefaultsInterceptorMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="recipeInitDefaultsInterceptor" />
+		<property name="typeCode" value="Recipe" />
+	</bean>
+
+	<bean id="recipeMenuJob"
+		class="org.training.uiip.recipesuiip.jobs.RecipeMenuJobPerformable"
+		parent="abstractJobPerformable">
+		<property name="recipeDao" ref="recipeDao" />
+	</bean>
+
+	<alias alias="recipeDao" name="defaultRecipeDao" />
+	<bean id="defaultRecipeDao"
+		class="org.training.uiip.recipesuiip.daos.impl.DefaultRecipeDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+	</bean>
+
+
+
+</beans>

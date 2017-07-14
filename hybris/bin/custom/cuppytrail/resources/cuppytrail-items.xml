@@ -46,6 +46,10 @@
                     <description>Capacity</description>
                     <persistence type="property" />
                 </attribute>
+                 <attribute qualifier="cont" type="java.lang.Integer">
+                    <persistence type="property" />
+                    <defaultvalue>0</defaultvalue>
+                </attribute>
 				<attribute type="StadiumType" qualifier="StadiumType">
    					<persistence type="property"/>
     				<defaultvalue>em().getEnumerationValue("StadiumType","openair")</defaultvalue>

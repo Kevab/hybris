@@ -20,7 +20,8 @@
 		<extension name="cuppytrail" />
 		<extension name="recipes" />
 		<extension name="cuppytrailhmc" />
-		 <extension name="cuppytrailfrontend" />
+		<extension name="cuppytrailfrontend" />
+		<extension name="cyclient" />
                          
     </extensions>
 </hybrisconfig>

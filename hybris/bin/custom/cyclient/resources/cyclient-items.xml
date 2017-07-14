@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+
+  
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:noNamespaceSchemaLocation="items.xsd">
+			
+	<relations>
+		
+		<relation code="StageRace2Stace" autocreate="true" generate="true" localized="false">
+			<sourceElement qualifier="stageRace" type="StageRace" cardinality="one">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</sourceElement>
+			<targetElement qualifier="stage" type="Stage" cardinality="many">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</targetElement>
+		</relation>
+		
+		<relation code="StageRace2CyclistRanking" autocreate="true" generate="true" localized="false">
+			<sourceElement qualifier="stageRace" type="StageRace" cardinality="one">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</sourceElement>
+			<targetElement qualifier="cyclistRanking" type="CyclistRanking" cardinality="many">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</targetElement>
+		</relation>
+		
+		<relation code="Stage2StaceRanking" autocreate="true" generate="true" localized="false">
+			<sourceElement qualifier="stage" type="Stage" cardinality="one">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</sourceElement>
+			<targetElement qualifier="stageRanking" type="StageRanking" cardinality="many">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</targetElement>
+		</relation>
+		
+		<relation code="Cyclist2StageRanking" autocreate="true" generate="true" localized="false">
+			<deployment table="Cyclist2StageRanking" typecode="20025" />
+			<sourceElement qualifier="cyclist" type="Cyclist" cardinality="many">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</sourceElement>
+			<targetElement qualifier="stageRanking" type="StageRanking" cardinality="many" collectiontype="list">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</targetElement>
+		</relation>
+		
+		<relation code="Cyclist2CyclistRanking" autocreate="true" generate="true" localized="false">
+			<deployment table="Cyclist2CyclistRanking" typecode="20026" />
+			<sourceElement qualifier="cyclist" type="Cyclist" cardinality="many">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</sourceElement>
+			<targetElement qualifier="cyclistRanking" type="CyclistRanking" cardinality="many" collectiontype="list">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</targetElement>
+		</relation>
+	
+	</relations>
+
+	<itemtypes>
+		
+		<itemtype code="StageRace" autocreate="true" generate="true">
+			<description>Stage Race item type</description>
+			<deployment table="StageRace" typecode="20021" />
+			<attributes>
+				<attribute type="java.lang.String" qualifier="code">
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="name">
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+				<attribute type="localized:java.lang.String" qualifier="nation">
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="numberOfStage">
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+		<itemtype code="Stage" autocreate="true" generate="true">
+			<description>Stage item type</description>
+			<deployment table="Stage" typecode="20022" />
+			<attributes>
+				<attribute type="java.lang.String" qualifier="code">
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="name">
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="date">
+					<persistence type="property" />
+					<modifiers optional="true" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="cityStart">
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="cityArrival">
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+				<attribute type="java.lang.Double" qualifier="distance">
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+		<itemtype code="CyclistRanking" autocreate="true" generate="true">
+			<description>Cyclist Rankink item type</description>
+			<deployment table="CyclistRanking" typecode="20023" />
+			<attributes>
+				<attribute type="java.lang.String" qualifier="code">
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="rank">
+					<persistence type="property" />
+					<modifiers optional="true" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="totalTime">
+					<persistence type="property" />
+					<modifiers optional="true" />
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+		<itemtype code="Cyclist" autocreate="true" generate="true">
+			<description>Cyclist item type</description>
+			<deployment table="Cyclist" typecode="20020" />
+			<attributes>
+				<attribute type="java.lang.String" qualifier="code">
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="name">
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+				
+			</attributes>
+		</itemtype>
+		<itemtype code="StageRanking" autocreate="true" generate="true">
+			<description>Stage Ranking item type</description>
+			<deployment table="StageRanking" typecode="20024" />
+			<attributes>
+				<attribute type="java.lang.String" qualifier="code">
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="ranking">
+					<persistence type="property" />
+					<modifiers optional="true" />
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="totalTime">
+					<persistence type="property" />
+					<modifiers optional="true" />
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+	</itemtypes>
+</items>

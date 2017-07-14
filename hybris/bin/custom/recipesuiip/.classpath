@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/platform"/>
+	<classpathentry exported="true" kind="lib" path="resources"/>
+	<classpathentry kind="src" output="eclipsebin/classes" path="src"/>
+	<classpathentry kind="src" output="eclipsebin/web/classes" path="web/src"/>
+	<classpathentry kind="src" output="eclipsebin/classes" path="testsrc"/>
+	<classpathentry kind="src" output="eclipsebin/classes" path="gensrc"/>
+	<classpathentry exported="true" kind="src" path="/mediaconversion"/>
+	<classpathentry exported="true" kind="src" path="/cockpit"/>
+	<classpathentry exported="true" kind="src" path="/hmc"/>
+	<classpathentry exported="true" kind="src" path="/ldap"/>
+	<classpathentry exported="true" kind="src" path="/admincockpit"/>
+	<classpathentry exported="true" kind="src" path="/solrfacetsearchhmc"/>
+	<classpathentry exported="true" kind="src" path="/cms2"/>
+	<classpathentry exported="true" kind="src" path="/payment"/>
+	<classpathentry exported="true" kind="src" path="/platformhmc"/>
+	<classpathentry exported="true" kind="src" path="/basecommerce"/>
+	<classpathentry exported="true" kind="src" path="/commercefacades"/>
+	<classpathentry exported="true" kind="src" path="/customerreview"/>
+	<classpathentry exported="true" kind="src" path="/promotions"/>
+	<classpathentry exported="true" kind="src" path="/voucher"/>
+	<classpathentry exported="true" kind="src" path="/solrfacetsearch"/>
+	<classpathentry exported="true" kind="src" path="/backoffice"/>
+	<classpathentry exported="true" kind="src" path="/mcc"/>
+	<classpathentry exported="true" kind="src" path="/commerceservices"/>
+	<classpathentry kind="output" path="eclipsebin/notused"/>
+</classpath>

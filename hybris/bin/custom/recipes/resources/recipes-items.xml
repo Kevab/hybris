@@ -14,6 +14,14 @@
 				<modifiers read="true" write="true" search="true" optional="true" />
 			</targetElement>
 		</relation>
+		<relation code="Menu2Recipe" autocreate="true" generate="true" localized="false">
+			<sourceElement qualifier="menu" type="Menu" cardinality="one">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</sourceElement>
+			<targetElement qualifier="recipe" type="Recipe" cardinality="many">
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</targetElement>
+		</relation>
 	</relations>
 
 
@@ -98,6 +106,20 @@
 				<attribute type="java.lang.Double" qualifier="quantity">
 					<persistence type="property" />
 					<modifiers optional="true" />
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<itemtype code="Menu" generate="true" autocreate="true">
+			<deployment table="Menu" typecode="20013" />
+			<attributes>
+				<attribute qualifier="code" type="java.lang.String">
+					<persistence type="property" />
+					<modifiers optional="false" unique="true" />
+				</attribute>
+				<attribute qualifier="name" type="localized:java.lang.String">
+					<persistence type="property" />
+					<modifiers optional="false" unique="false" />
 				</attribute>
 			</attributes>
 		</itemtype>

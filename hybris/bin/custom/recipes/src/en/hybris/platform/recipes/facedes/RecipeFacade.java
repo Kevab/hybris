@@ -14,7 +14,7 @@ import en.hybris.platform.recipes.data.RecipeData;
  */
 public interface RecipeFacade
 {
-	List<RecipeData> getRecipeForCode(String code);
+	RecipeData getRecipeForCode(String code);
 
 	List<RecipeData> getRecipeForFoodCode(String code);
 
