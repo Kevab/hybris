@@ -42,7 +42,7 @@ public class DefaultCyclientDAO implements CyclientDAO
 	public Collection<CyclistRankingModel> findCyclistRankingByStageRaceCode(final String stageRaceCode)
 	{
 
-		final String queryString = "SELECT {s.PK} FROM {StageRace as sr JOIN Stage as s ON {sr.PK}= {s.stageRace}}";
+		final String queryString = "SELECT {c.PK} FROM {CyclistRanking as c JOIN StageRace as sr ON {sr.PK} = {c.stageRace} WHERE {sr.code=?stageRaceCode}}";
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
 
@@ -54,7 +54,7 @@ public class DefaultCyclientDAO implements CyclientDAO
 	public Collection<StageRaceModel> findStageRaces()
 	{
 
-		final String queryString = "SELECT {sr.PK} FROM {StageRanking as sr JOIN Stage as s ON {s.PK}= {sr.stage}}";
+		final String queryString = "SELECT * FROM {StageRace}";
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
 
@@ -66,7 +66,7 @@ public class DefaultCyclientDAO implements CyclientDAO
 	public Collection<StageModel> findStagesByStageRaceCode(final String stageRaceCode)
 	{
 
-		final String queryString = "SELECT {c.PK} FROM {StageRace as sr JOIN CyclistRanking as c ON {sr.PK} = {c.stageRace}}";
+		final String queryString = "SELECT {s.PK} FROM {Stage as s JOIN StageRace as sr ON {s.stageRace}={sr.PK} WHERE {s.code}=?stageRaceCode";
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
 
@@ -78,7 +78,7 @@ public class DefaultCyclientDAO implements CyclientDAO
 	public Collection<StageRankingModel> findStageRankingByStageCode(final String stageCode)
 	{
 
-		final String queryString = "";
+		final String queryString = "SELECT {sr.PK} FROM {StageRanking as sr JOIN Stage as s ON {s.PK}= {sr.stage} WHERE {s.code}=?stageCode";
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
 
